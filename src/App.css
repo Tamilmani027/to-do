@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+*{
+	padding: 0;
+	margin:0;
+	box-sizing: border-box;
+}
+
+.header{
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	margin-bottom: 20px;
+}
+
+h1{
+	text-align: center;
+	background-color:beige;
+	padding:20px;
+	margin-bottom: 20px;
+	box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+
+}
+
+input{
+	padding:8px;
+	border-radius: 6px;
+	border:none;
+	background:wheat;
+	box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+
+
+}
+button{
+	padding:8px;
+	border-radius: 6px;
+	border:none;
+	background:darkgreen;
+	color:aliceblue;
+	box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+
+
+}
+
+button:hover{
+	cursor: pointer;
+	background:black;
+}
+
+.todocard{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	border:none;
+	width:200px;
+	height:250px;
+	border-radius: 6px;
+	padding:20px;
+	box-shadow: 2px black;
+	box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+	background-color: cornsilk;
+}
+
+.todocard select{
+	width:100px;
+}
+
+.main-todo{
+	display: flex;
+	gap:20px;
+	align-items: 	center;
+	justify-content: space-evenly;
+	margin-bottom: 20px;
+}
+
+.todo-filter{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap:10px;
+}
+
+.main-section{
+	margin:20px;
+}
+
+.tasklist{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-evenly;
+	gap:20px;
+}
+
+.option-completed{
+	background: chartreuse;
+}
+
+.option-notcompleted{
+	background:red;
+}
+	
+.cardselect{
+	
+	color:white;
+  padding: 5px;
+  border-radius:4px;
+	width:150px;
+}
