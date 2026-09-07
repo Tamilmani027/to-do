@@ -1,16 +1,58 @@
-# React + Vite
+# React Todo App
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A simple and responsive Todo application built with React and Vite. Users can add tasks, edit task names and descriptions, update task status, filter tasks by status, and delete tasks.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Add new todo items with a task name and description
+- Edit an existing todo item inline
+- Mark tasks as Completed or Not Completed
+- Delete tasks from the list
+- Filter tasks by All, Completed, or Not Completed
+- Responsive layout for desktop, tablet, and mobile devices
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- Vite
+- JavaScript
+- CSS
 
-## Expanding the Oxlint configuration
+## Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- `src/App.jsx` - main application shell
+- `src/components/Header.jsx` - add-task form
+- `src/components/Main.jsx` - todo state and filtering logic
+- `src/components/TodoCard.jsx` - individual todo card UI
+- `src/App.css` - application styling and responsive design
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18 or later
+- npm
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Run the app locally
+
+```bash
+npm run dev
+```
+
+Then open the local URL shown in the terminal (usually `http://localhost:5173`).
+
+### Build for production
+
+```bash
+npm run build
+```
+
+## Notes
+
+This project was created as a lightweight React learning app and keeps the original functionality intact while improving usability and responsiveness across screen sizes.

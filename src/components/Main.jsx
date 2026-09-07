@@ -56,7 +56,7 @@ return (
       </div>
       {
         todolist.length===0?
-        <h1>Welcome to Todo App!</h1> :
+        <h2>Welcome to Todo App!</h2> :
         <div className='tasklist'>
 					{
           filteredTodo.map((task) => (

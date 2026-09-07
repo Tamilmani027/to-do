@@ -17,12 +17,15 @@ function Header({ addTodo }) {
         value={name}
         placeholder='Name'
         onChange={(e) => setName(e.target.value)}
+        className='input1'
       />
       <input
         type='text'
         value={desc}
         placeholder='Description'
         onChange={(e) => setDesc(e.target.value)}
+        className='input1'
+
       />
       <button
         type='submit'
