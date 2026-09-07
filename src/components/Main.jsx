@@ -30,7 +30,8 @@ const filteredTodo = todolist.filter((todo) => {
      return todo.status===filterStatus;
 });
 
-console.log(filteredTodo)
+const updateEdit=(name,desc,id)=>{
+  Settodolist(todolist.map((task) =>task.id === id ? { ...task, name: name, description:desc } : task))}
 
 return (
     <>
@@ -64,6 +65,7 @@ return (
           task={task} 
           removeTodo={removeTodo} 
           updateTodoStatus={updateTodoStatus} 
+          updateEdit={updateEdit}
           />
         ))
         }
