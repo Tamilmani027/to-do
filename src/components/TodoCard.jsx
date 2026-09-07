@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 
-function TodoCard({ task }) {
-  const [status, setStatus] = useState('Not Completed')
+function TodoCard({ task,removeTodo, updateTodoStatus}) {
+  const [status, setStatus] = useState('Not Completed');
+  const [isEdit,setIsEdit]=useState(false);
 
-`  const statusColors = {
-    Completed: 'green',
+  const statusColors = {
+    'Completed': 'green',
     'Not Completed': 'red'
-  }`
+  }
+  
 
   return (
     <div className='todocard'>
@@ -14,18 +16,21 @@ function TodoCard({ task }) {
       <p>Name: {task.name}</p>
       <p>Description: {task.description}</p>
       <select
-        value={status}
-        onChange={(e) => setStatus(e.target.value)}
+        value={task.status}
+        onChange={(e) => updateTodoStatus(e.target.value,task.id)}
         className='cardselect'
         style={{
-          backgroundColor: statusColors[status],
+          backgroundColor: statusColors[task.status],
         }}
       >
-        <option>Completed</option>
-        <option>Not Completed</option>
+        <option value='Completed'>Completed</option>
+        <option value='Not Completed'>Not Completed</option>
       </select>
-      <button>Edit</button>
-      <button>Delete</button>
+      <div className='btn-container'>
+          <button onClick={()=>setIsEdit(true)}>Edit</button>
+          <button onClick={()=>removeTodo(task.id)}>Delete</button>
+      </div>
+     
     </div>
   )
 }

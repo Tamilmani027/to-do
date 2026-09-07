@@ -4,45 +4,72 @@ import TodoCard from './TodoCard'
 
 function Main() {
   const [todolist, Settodolist] = useState([])
-	const [status, setStatus] = useState('All')
+  const [todostatus, settodoStatus] = useState('')
+  const [filterStatus, setfilterStatus]=useState('All')
+
 	
-	const statusColors = {
+const statusColors = {
     Completed: 'green',
     'Not Completed': 'red',
 		'All':'white'
   }
 
-  const addTodo = (task) => {
-    Settodolist([...todolist, {id:task.id,name:task.name,description:task.description}])
+const addTodo = (name,desc) => {
+    Settodolist([...todolist, {id:Date.now(), name:name, description:desc, status:'Not Completed'}]);
   }
 
-  return (
+const removeTodo=(id)=>{
+		Settodolist(todolist.filter((task)=>task.id!==id));
+	}
+
+const updateTodoStatus = (status, id) => {
+  Settodolist(todolist.map((task) =>task.id === id ? { ...task, status: status } : task))}
+
+const filteredTodo = todolist.filter((todo) => {
+    if (filterStatus==='All') return true;
+     return todo.status===filterStatus;
+});
+
+console.log(filteredTodo)
+
+return (
     <>
       <div className='main-section'>
-        <Header addTodo={addTodo} />
+        <Header addTodo={addTodo} todostatus={todostatus} settodoStatus={settodoStatus}/>
         <div className='main-todo'>
           <p>My ToDo's</p>
           <div className='todo-filter'>
             <p>Status: Filter:</p>
-            <select value={status}
-        			onChange={(e) => setStatus(e.target.value)}
+            <select value={filterStatus}
+        			onChange={(e) => setfilterStatus(e.target.value)}
         			className='cardselect'
         			style={{
-          		backgroundColor: statusColors[status],
+          		backgroundColor: statusColors[filterStatus],
         			}}>
-              <option className='option'>All</option>
-              <option className='option'>Completed</option>
-              <option className='option'>Not Completed</option>
+              <option value='All' className='optionall'>All</option>
+              <option value='Completed' className='option-completed'>Completed</option>
+              <option value='Not Completed' className='option-notcompleted'>Not Completed</option>
             </select>
           </div>
         </div>
-       
       </div>
-			<div className='tasklist'>
-					{todolist.map((task) => (
-          <TodoCard key={task.id} task={task} />
-        ))}
+      {
+        todolist.length===0?
+        <h1>Welcome to Todo App!</h1> :
+        <div className='tasklist'>
+					{
+          filteredTodo.map((task) => (
+          <TodoCard 
+          key={task.id} 
+          task={task} 
+          removeTodo={removeTodo} 
+          updateTodoStatus={updateTodoStatus} 
+          />
+        ))
+        }
 			</div>
+      }
+			
     </>
   )
 }

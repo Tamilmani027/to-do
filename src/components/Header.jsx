@@ -4,6 +4,12 @@ function Header({ addTodo }) {
   const [name, setName] = useState('')
   const [desc, setDesc] = useState('')
 
+  const Addtodo=(name,desc) => {
+          addTodo(name,desc)
+          setName('')
+          setDesc('')
+        };
+
   return (
     <div className='header'>
       <input
@@ -20,11 +26,7 @@ function Header({ addTodo }) {
       />
       <button
         type='submit'
-        onClick={() => {
-          addTodo({ id: Date.now(), name: name, description: desc })
-          setName('')
-          setDesc('')
-        }}
+        onClick={()=>Addtodo(name,desc)}
       >
         Add ToDo
       </button>

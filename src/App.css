@@ -93,7 +93,7 @@ button:hover{
 }
 
 .option-completed{
-	background: chartreuse;
+	background:darkgreen;
 }
 
 .option-notcompleted{
@@ -101,9 +101,13 @@ button:hover{
 }
 	
 .cardselect{
-	
-	color:white;
   padding: 5px;
   border-radius:4px;
 	width:150px;
+}
+
+.btn-container{
+	display:flex;
+	justify-content: right;
+	gap:10px;
 }
