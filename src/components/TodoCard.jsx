@@ -11,8 +11,8 @@ function TodoCard({ task,removeTodo, updateTodoStatus, updateEdit}) {
     'Not Completed': 'red'
   }
 
-  const HandleEdit=()=>{
-    updateEdit(task.id, name, desc)
+  const HandleEdit=(name,desc)=>{
+    updateEdit(name, desc, task.id)
     setIsEdit(false)
   }
   
@@ -47,7 +47,7 @@ function TodoCard({ task,removeTodo, updateTodoStatus, updateEdit}) {
       <div className='btn-container'>
         {
           isEdit ?
-          <button onClick={()=>HandleEdit()}>Update</button> : <button onClick={()=>setIsEdit(true)}>Edit</button>
+          <button onClick={()=>HandleEdit(name,desc)}>Update</button> : <button onClick={()=>setIsEdit(true)}>Edit</button>
         }
           <button onClick={()=>removeTodo(task.id)}>Delete</button>
       </div>
