@@ -1,12 +1,19 @@
-import React, { useState } from 'react'
+import React, { useReducer, useState } from 'react'
 import Header from './Header'
 import TodoCard from './TodoCard'
+import Reducer from '../reducer/Reducer'
 
 function Main() {
   const [todolist, Settodolist] = useState([])
   const [todostatus, settodoStatus] = useState('')
   const [filterStatus, setfilterStatus]=useState('All')
 
+  const initialState={
+    todolist: [],
+    filterStatus: 'All'
+  };
+
+  const [state,dispatch]=useReducer[Reducer,initialState];
 	
 const statusColors = {
     Completed: 'green',
@@ -36,7 +43,7 @@ const updateEdit=(name,desc,id)=>{
 return (
     <>
       <div className='main-section'>
-        <Header addTodo={addTodo} todostatus={todostatus} settodoStatus={settodoStatus}/>
+        <Header addTodo={addTodo} dispatch={dispatch} todostatus={todostatus} settodoStatus={settodoStatus}/>
         <div className='main-todo'>
           <p>My ToDo's</p>
           <div className='todo-filter'>
