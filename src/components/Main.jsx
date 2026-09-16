@@ -20,7 +20,8 @@ const statusColors = {
   }
 
 const updateTodoStatus = (status, id) => {
-  Settodolist(state.todolist.map((task) =>task.id === id ? { ...task, status: status } : task))}
+    dispatch({ type: 'UPDATE_TODO_STATUS', payload: { id, status } });
+}
 
 const filteredTodo = state.todolist.filter((todo) => {
     if (state.filterStatus==='All') return true;
@@ -36,7 +37,7 @@ return (
           <div className='todo-filter'>
             <p>Status: Filter:</p>
             <select value={state.filterStatus}
-        			onChange={(e) => setfilterStatus(e.target.value)}
+        			onChange={(e) => dispatch({ type: 'SET_FILTER', payload: e.target.value })}
         			className='cardselect'
         			style={{
           		backgroundColor: statusColors[state.filterStatus],
