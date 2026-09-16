@@ -1,4 +1,5 @@
-function todoReducer(state, action) {
+function reducer(state, action) {
+ 
   switch (action.type) {
     case 'ADD_TODO':
       return {
@@ -13,9 +14,23 @@ function todoReducer(state, action) {
           }
         ]
       };
+      
+    case 'REMOVE_TODO':
+      return {
+          ...state,
+          todolist: state.todolist.filter((task)=>task.id!==action.payload)
+          };
+
+    case 'UPDATE_TODO':
+      return {
+              ...state,
+              todolist:state.todolist.map((task) =>task.id === action.payload.id ? { ...task, name: action.payload.name, description:action.payload.desc } : task)
+      }
+  
     default:
       return state;
   }
 }
 
-export default todoReducer;
+export default reducer;
+

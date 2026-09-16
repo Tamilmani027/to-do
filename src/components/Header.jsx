@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 
-function Header({ addTodo }) {
+function Header({ dispatch }) {
   const [name, setName] = useState('')
   const [desc, setDesc] = useState('')
 
   const Addtodo=(name,desc) => {
-          addTodo(name,desc)
+          dispatch({ type: 'ADD_TODO', payload: { name:name,desc:desc} });
           setName('')
           setDesc('')
         };
