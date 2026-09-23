@@ -1,18 +1,17 @@
 function reducer(state, action) {
  
   switch (action.type) {
+
+    case 'GET_TODOS':
+      return {
+        ...state,
+        todolist:action.payload
+      }
+
     case 'ADD_TODO':
       return {
         ...state,
-        todolist: [
-          ...state.todolist,
-          {
-            id: Date.now(),
-            name: action.payload.name,
-            description: action.payload.desc,
-            status: 'Not Completed'
-          }
-        ]
+        todolist:[...state.todolist,action.payload]
       };
       
     case 'REMOVE_TODO':
@@ -24,8 +23,9 @@ function reducer(state, action) {
     case 'UPDATE_TODO':
       return {
               ...state,
-              todolist:state.todolist.map((task) =>task.id === action.payload.id ? { ...task, name: action.payload.name, description:action.payload.desc } : task)
+              todolist:state.todolist.map((task) =>task.id === action.payload.id ? { ...task, name: action.payload.name, desc:action.payload.desc } : task)
       }
+
     case 'UPDATE_TODO_STATUS':
       return {
         ...state,

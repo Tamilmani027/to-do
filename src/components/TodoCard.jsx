@@ -1,18 +1,18 @@
 import React, { useState } from 'react'
 
-function TodoCard({ task,dispatch, updateTodoStatus, updateEdit}) {
+function TodoCard({ task,dispatch, updateTodoStatus, deleteTodo,updateTodo}) {
   const [status, setStatus] = useState('Not Completed');
   const [isEdit,setIsEdit]=useState(false);
   const [name,setName]=useState(task.name);
-  const [desc,setDesc]=useState(task.description);
+  const [desc,setDesc]=useState(task.desc);
 
   const statusColors = {
     'Completed': 'green',
     'Not Completed': 'red'
   }
 
-  const HandleEdit=(name,desc)=>{
-    dispatch({type:'UPDATE_TODO', payload:{name:name, desc:desc, id:task.id}})
+  const HandleEdit=(name, desc, id)=>{
+    updateTodo(name, desc, id)
     setIsEdit(false)
   }
   
@@ -29,7 +29,7 @@ function TodoCard({ task,dispatch, updateTodoStatus, updateEdit}) {
             :
             <>
             <p>Name: {task.name}</p>
-            <p>Description: {task.description}</p>
+            <p>Description: {task.desc}</p>
             </>
 }
         
@@ -47,9 +47,9 @@ function TodoCard({ task,dispatch, updateTodoStatus, updateEdit}) {
       <div className='btn-container'>
         {
           isEdit ?
-          <button onClick={()=>HandleEdit(name,desc)}>Update</button> : <button onClick={()=>setIsEdit(true)}>Edit</button>
+          <button onClick={()=>HandleEdit(name, desc, task.id)}>Update</button> : <button onClick={()=>setIsEdit(true)}>Edit</button>
         }
-          <button onClick={()=>dispatch({ type: 'REMOVE_TODO', payload: task.id})}>Delete</button>
+          <button onClick={()=>deleteTodo(task.id)}>Delete</button>
       </div>
             
      
@@ -58,3 +58,4 @@ function TodoCard({ task,dispatch, updateTodoStatus, updateEdit}) {
 }
 
 export default TodoCard
+

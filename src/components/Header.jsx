@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 
-function Header({ dispatch }) {
+function Header({ addTodo }) {
   const [name, setName] = useState('')
   const [desc, setDesc] = useState('')
 
-  const Addtodo=(name,desc) => {
-          dispatch({ type: 'ADD_TODO', payload: { name:name,desc:desc} });
+  const Addtodo1=(name,desc) => {
+          addTodo(name,desc)
           setName('')
           setDesc('')
         };
@@ -29,7 +29,7 @@ function Header({ dispatch }) {
       />
       <button
         type='submit'
-        onClick={()=>Addtodo(name,desc)}
+        onClick={()=>Addtodo1(name,desc)}
       >
         Add ToDo
       </button>
